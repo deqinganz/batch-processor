@@ -1,4 +1,4 @@
-package service
+package batchprocessor
 
 import (
 	. "github.com/deqinganz/batching-api/api"
