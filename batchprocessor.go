@@ -8,7 +8,7 @@ import (
 
 type BatchProcessor struct{}
 
-// Process is one method of BatchProcessor which should be implemented externally
+// Process simply changes all job status to SUBMITTED and logs the jobs that are processed
 func (b *BatchProcessor) Process(jobs []Job) {
 	for i := range jobs {
 		jobs[i].Status = SUBMITTED
