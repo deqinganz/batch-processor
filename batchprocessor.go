@@ -23,8 +23,8 @@ func (b *BatchProcessor) Process(jobs []Job) {
 }
 
 // ProcessAndSleep is a wrapper function that calls Process and then sleeps for a given duration
-func (b *BatchProcessor) ProcessAndSleep(jobs []Job, duration int) {
+func (b *BatchProcessor) ProcessAndSleep(jobs []Job, seconds int) {
 	b.Process(jobs)
-	log.Printf("Sleeping for %d seconds", duration)
-	time.Sleep(time.Duration(duration) * time.Second)
+	log.Printf("Sleeping for %d seconds", seconds)
+	time.Sleep(time.Duration(seconds) * time.Second)
 }
