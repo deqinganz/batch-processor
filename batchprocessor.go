@@ -4,6 +4,7 @@ import (
 	"fmt"
 	. "github.com/deqinganz/batching-api/api"
 	"log"
+	"time"
 )
 
 type BatchProcessor struct{}
@@ -19,4 +20,11 @@ func (b *BatchProcessor) Process(jobs []Job) {
 		output = output + fmt.Sprintf("[%s %s \"%s\"] ", job.Id.String()[:8], job.Type, job.Name)
 	}
 	log.Printf("Processed jobs: %s", output)
+}
+
+// ProcessAndSleep is a wrapper function that calls Process and then sleeps for a given duration
+func (b *BatchProcessor) ProcessAndSleep(jobs []Job, duration int) {
+	b.Process(jobs)
+	log.Printf("Sleeping for %d seconds", duration)
+	time.Sleep(time.Duration(duration) * time.Second)
 }
